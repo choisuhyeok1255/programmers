@@ -1,27 +1,14 @@
 function solution(participant, completion) {
-  let answer = '';
-  const temp = [];
-  const count = participant.length;
-  const min = participant.length - completion.length;
+  let answer = "";
+  let temp = participant;
 
-  participant.sort();
-  completion.sort();
+  for (let i = 0; i < completion.length; i++) {
+    let participantIndex = temp.indexOf(completion[i], 0);
 
-  
-  for(let i = 0; i < count; i++){
-    if(min === temp.length) return answer;
-    
-    if (participant[0] === completion[0]) {
-      participant.shift();
-      completion.shift();
-    } else {
-      temp.push(participant[0]);
-      participant.shift();
-    }
-
+    temp.splice(participantIndex, 1);
   }
 
-  answer = temp.join('');
+  answer = temp[0];
 
   return answer;
 }
